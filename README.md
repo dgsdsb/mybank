@@ -4,7 +4,7 @@
   <img src="./imagens/logo.png" alt="Logo do MyBank" width="150"/>
 </p>
 
-<p align="center">✨ Um projeto de banco digital desenvolvido para estudos</p>
+<p align="center">Projeto/Dashboard de banco digital desenvolvido para estudos</p>
 
 ---
 
