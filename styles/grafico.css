@@ -1,0 +1,122 @@
+.dadosDolar,
+.dadosIene {
+    margin: 3em auto;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 24px;
+    width: 65%;
+    color: var(--cinza);
+}
+
+.grafico {
+    width: 30vw;
+}
+
+.grafico__titulo {
+    display: flex;
+    align-items: center;
+}
+
+.grafico__titulo span {
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 40px;
+}
+
+.grafico__ilustracao-dolar {
+    background-image: url('../imagens/cifrao.png');
+}
+
+.grafico__ilustracao-iene {
+    background-image: url('../imagens/iene.png');
+}
+
+.grafico__titulo h2 {
+    color: var(--cinza);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.investimentos__lista {
+    margin: 2em;
+    color: var(--cinza);
+}
+
+.investimentos__lista li {
+    margin: 1em 0;
+}
+
+/* === Centralização dos cards no desktop (mantém seu 65%) === */
+.dadosDolar,
+.dadosIene {
+  max-width: 980px;       /* limita a largura total em telas muito grandes */
+}
+
+/* === Tablet: empilha e alarga === */
+@media (max-width: 1024px) {
+  .dadosDolar,
+  .dadosIene {
+    width: 92%;                 /* mais largo que 65% */
+    flex-direction: column;     /* gráfico em cima, lista embaixo */
+    gap: 16px;
+  }
+  .grafico {
+    width: 100%;                /* ocupar a largura toda do card */
+  }
+  .grafico__titulo h2 {
+    font-size: 20px;
+  }
+  .grafico__titulo span {
+    width: 36px;
+    height: 30px;
+  }
+  .investimentos__lista { margin: 1.2em 0 0 0; }
+}
+
+/* === Mobile: uma coluna, 100% width e tipografia legível === */
+@media (max-width: 768px) {
+  .dadosDolar,
+  .dadosIene {
+    width: 100%;
+    border-radius: 16px;
+    padding: 1.2em;
+    gap: 12px;
+  }
+
+  /* anula o 30vw para o gráfico realmente expandir */
+  .grafico {
+    width: 100% !important;
+  }
+
+  .grafico__titulo {
+    gap: 8px;
+    align-items: center;
+  }
+  .grafico__titulo h2 {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  .grafico__titulo span {
+    width: 30px;
+    height: 26px;
+    background-size: contain;
+  }
+
+  .investimentos__lista {
+    margin: 1em 0 0 0;
+    line-height: 1.55;
+  }
+}
+
+/* === Mobile pequeno: microajustes === */
+@media (max-width: 480px) {
+  .dadosDolar,
+  .dadosIene {
+    padding: 1em;
+    border-radius: 14px;
+  }
+  .grafico__titulo h2 { font-size: 17px; }
+  .grafico__titulo span { width: 28px; height: 24px; }
+}

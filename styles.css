@@ -1,0 +1,177 @@
+@import url("./styles/grafico.css");
+@import url("./styles/cabecalho.css");
+@import url("./styles/rodape.css");
+@import url("./styles/sidebar.css");
+
+/* ============================= */
+/* BASE / TOKENS                 */
+/* ============================= */
+:root{
+  --white:#E4E9F6;
+  --azul:#0a3e83;
+  --verde-claro:#CCF8ED;
+  --verde-escuro:#00DEA3;
+  --cinza:#444444;
+
+  --fs-body:clamp(15px,1.6vw,16px);
+  --fs-h2:clamp(18px,2.2vw,22px);
+  --radius:16px;
+  --shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Montserrat',sans-serif;
+  line-height:1.6;
+  color:var(--cinza);
+  font-size:var(--fs-body);
+  background:var(--white);
+}
+
+/* ============================= */
+/* LAYOUT PRINCIPAL (DESKTOP)    */
+/* ============================= */
+.container{
+  display:grid;
+  grid-template-columns:20% 1fr; /* sidebar | conteúdo */
+  min-height:100vh;
+}
+
+.logo{
+  width:120px;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
+.dados{padding:24px 28px}
+
+/* cards centralizados mantendo seu visual */
+.dadosDolar,.dadosIene{
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin:24px auto;
+  max-width:760px;               /* centraliza os blocos */
+  overflow:hidden;               /* impede qualquer “vazamento” */
+}
+
+/* cabeçalho container centralizado */
+.cabecalho{max-width:760px;margin:0 auto 10px}
+
+/* títulos (mantém sua cara) */
+.dados h2,.cabecalho h2,.grafico__titulo h2,.investimentos h2{
+  font-size:var(--fs-h2);
+  color:#2b2b2b;
+  margin:0;
+  line-height:1.25;
+  letter-spacing:.1px;
+}
+
+/* imagens fluidas */
+img,.logo,.sidebar__avatar{max-width:100%;height:auto}
+
+/* título com ícone alinhado e respiro antes do canvas */
+.grafico__titulo{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.grafico__ilustracao-dolar,.grafico__ilustracao-iene{
+  flex:0 0 auto;width:28px;height:28px;border-radius:6px;
+}
+
+/* gráfico responsivo (usa a altura do container) */
+.grafico{
+  position:relative;
+  width:100%;
+  height:340px;
+  margin:8px 0 22px;     /* + espaçamento abaixo do canvas */
+}
+.grafico canvas{display:block;width:100% !important;height:100% !important}
+
+/* “Valores da moeda” com respiro maior após o gráfico */
+.dadosDolar .investimentos,
+.dadosIene  .investimentos{
+  border-top:1px solid rgba(0,0,0,.08);
+  padding-top:20px;       /* << distância do gráfico para o título */
+}
+.investimentos__lista{margin-top:10px;line-height:1.6}
+
+/* ============================= */
+/* HAMBÚRGUER (SVG) + BACKDROP   */
+/* ============================= */
+.hamburger{display:none} /* desktop: escondido */
+
+.backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.35);
+  z-index:1090;opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.backdrop.active{opacity:1;pointer-events:auto}
+
+/* ============================= */
+/* TABLET (≤1024px)              */
+/* ============================= */
+@media (max-width:1024px){
+  .container{grid-template-columns:24% 1fr}
+  .logo{width:100px}
+  .dados{padding:20px}
+  .grafico{height:300px}
+}
+
+/* ============================= */
+/* MOBILE (≤768px)               */
+/* ============================= */
+@media (max-width:768px){
+  .container{grid-template-columns:1fr}
+  .dados{padding:14px}
+
+  /* sidebar off-canvas */
+  .sidebar{
+    position:fixed;top:0;left:-260px;width:260px;height:100%;background:#fff;
+    box-shadow:8px 0 20px rgba(0,0,0,.08);z-index:1100;transition:left .3s ease;
+    padding:20px 14px;overflow-y:auto;
+  }
+  .sidebar.active{left:0}
+
+  /* hambúrguer minimalista dentro do cabeçalho */
+  .cabecalho{
+    position:relative;
+    padding:12px 16px 12px 46px;     /* reserva espaço pro botão */
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .hamburger{
+    display:inline-grid;
+    place-items:center;
+    position:absolute;left:12px;top:50%;transform:translateY(-50%);
+    width:30px;height:30px;padding:0;border:0;background:transparent;cursor:pointer;
+    border-radius:8px;
+  }
+  .hamburger:focus-visible{
+    outline:2px solid rgba(10,62,131,.35);
+    outline-offset:2px;
+  }
+  .hamburger svg{width:18px;height:14px;overflow:visible}
+  .hamburger line{
+    stroke:var(--azul);stroke-width:2.2;stroke-linecap:round;
+    transition:transform .18s ease, opacity .18s ease;
+  }
+  body.menu-open .hamburger .l1{transform:translateY(6px) rotate(45deg)}
+  body.menu-open .hamburger .l2{opacity:0}
+  body.menu-open .hamburger .l3{transform:translateY(-6px) rotate(-45deg)}
+
+  /* logo menor no mobile */
+  .sidebar .logo{width:86px !important;height:auto;margin:10px auto 16px;display:block}
+
+  .cabecalho h2{font-size:clamp(16px,4.5vw,18px);text-align:center;line-height:1.35}
+
+  .grafico{height:240px}
+  .sidebar__links a{display:block;padding:10px 8px;font-size:16px}
+}
+
+/* ============================= */
+/* MOBILE PEQUENO (≤480px)       */
+/* ============================= */
+@media (max-width:480px){
+  .dados{padding:12px}
+}

@@ -1,0 +1,30 @@
+.cabecalho {
+    text-align: center;
+    background-color: white;
+    color: var(--azul);
+    padding: 1em 0;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* === Responsivo do cabeçalho === */
+@media (max-width: 1024px) {
+  .cabecalho {
+    font-size: 15px;
+    padding: 0.9em 0.6em;
+  }
+}
+@media (max-width: 768px) {
+  .cabecalho {
+    font-size: 14px;
+    line-height: 1.35;
+    padding: 0.8em 0.6em;
+  }
+}
+@media (max-width: 480px) {
+  .cabecalho {
+    font-size: 13.5px;
+    padding: 0.7em 0.5em;
+  }
+}

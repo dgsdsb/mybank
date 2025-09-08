@@ -1,0 +1,10 @@
+.rodape {
+    padding-bottom: 2em;
+    text-align: center;
+    color: var(--azul);
+}
+
+/* === Rodapé com respiro saudável no mobile === */
+@media (max-width: 768px) {
+  .rodape { padding: 1.2em 0 1.6em; }
+}
