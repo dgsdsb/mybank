@@ -1,0 +1,35 @@
+@import url("./styles/grafico.css");
+@import url("./styles/cabecalho.css");
+@import url("./styles/rodape.css");
+@import url("./styles/sidebar.css");
+
+:root {
+    --white: #E4E9F6;
+    --azul: #0a3e83;
+    --verde-claro: #CCF8ED;
+    --verde-escuro: #00DEA3;
+    --cinza: #444444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 29px;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 20% auto;
+    background-color: var(--white);
+}
+
+.logo {
+  width: 120px;  /* ajuste conforme quiser */
+  height: auto;  /* mantém a proporção */
+  display: block;
+  margin: 0 auto; /* centraliza se precisar */
+
+}
